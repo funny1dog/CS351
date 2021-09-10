@@ -14,11 +14,14 @@ import javafx.stage.Stage;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-public class modulo extends Application {
+public class Main extends Application {
+    // set up basic variables
     private Color color;
     private double numOfIncrement = 0.1;
     private double numOfFactor = 0;
     private double frameRate = 0;
+
+    // sort decimal format into the right format
     private DecimalFormat decimalFormat = new DecimalFormat ("#.##");
 
     public static void main(String[] args) {
@@ -41,35 +44,6 @@ public class modulo extends Application {
 
         // create the circle and pass the circle into the main part
         Calculation circle = new Calculation();
-
-        // set up animation
-        AnimationTimer timer = new AnimationTimer() {
-            // setup nextTime
-            private long nextTime = 0;
-            @Override
-            public void handle(long now) {
-                // clean the pane1 elements
-                // pane1.getChildren().remove();
-
-                // increase the times table number
-                numOfFactor = numOfFactor + numOfIncrement;
-                int randomColor;
-                randomColor = (int)(numOfFactor % 50);
-
-                // random color
-                switch(randomColor){
-                    default: color = Color.color(Math.random(), Math.random(), Math.random());
-                }
-
-                // draw the line with random color
-                Calculation drawCircle = new Calculation(numOfFactor, circle.getNumOfPoints(), color);
-
-                drawCircle.show(pane1);
-                nextTime = now;
-
-                // update info section
-            }
-        };
 
         // create slider control to set increments elements and two vbox
         VBox sliderIncrementVBox = new VBox(Spacing);
@@ -174,6 +148,30 @@ public class modulo extends Application {
         HboxBtn.getChildren().addAll(btnStart, btnStop, btnRandom);
         HboxBtn.setLayoutX(10);
         HboxBtn.setLayoutY(710);
+
+        // set up animation
+        AnimationTimer timer = new AnimationTimer() {
+            private long nextTime = 0;
+            @Override
+            public void handle(long now) {
+                if (now - nextTime >= 1000_000_000 * sliderFPS.getValue()){
+                    numOfFactor = numOfFactor + numOfIncrement;
+                    int randomColor;
+                    randomColor = (int)(numOfFactor % 50);
+
+                    // random color
+                    switch(randomColor){
+                        default: color = Color.color(Math.random(), Math.random(), Math.random());
+                    }
+
+                    // draw the line with random color
+                    Calculation drawCircle = new Calculation(numOfFactor, circle.getNumOfPoints(), color);
+                    drawCircle.show(pane1);
+                    nextTime = now;
+                }
+
+            }
+        };
 
         // start listener
         btnStart.setOnAction(event -> {

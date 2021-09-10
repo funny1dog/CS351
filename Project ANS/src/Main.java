@@ -180,12 +180,8 @@ public class Main extends Application {
                     //Cycling random color
                     switch(RandomColor)
                     {
-
                         default : color = Color.color(Math.random(), Math.random(), Math.random());
-
                     }
-
-
 
                     //Draw the lines with its color, and show in the root
                     Visualization circlePage = new Visualization(factorNum, circle.getnumPoints(), color);
