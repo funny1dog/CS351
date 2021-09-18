@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="javafx_examples.CalculatorFXML"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <top>
+        <Text fx:id="display" />
+    </top>
+
+    <center>
+        <GridPane>
+            <children>
+                <Button text="1" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>0</GridPane.columnIndex>
+                    <GridPane.rowIndex>0</GridPane.rowIndex>
+                </Button>
+                <Button text="2" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>1</GridPane.columnIndex>
+                    <GridPane.rowIndex>0</GridPane.rowIndex>
+                </Button>
+                <Button text="3" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>2</GridPane.columnIndex>
+                    <GridPane.rowIndex>0</GridPane.rowIndex>
+                </Button>
+                <Button text="4" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>0</GridPane.columnIndex>
+                    <GridPane.rowIndex>1</GridPane.rowIndex>
+                </Button>
+                <Button text="5" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>1</GridPane.columnIndex>
+                    <GridPane.rowIndex>1</GridPane.rowIndex>
+                </Button>
+                <Button text="6" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>2</GridPane.columnIndex>
+                    <GridPane.rowIndex>1</GridPane.rowIndex>
+                </Button>
+                <Button text="7" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>0</GridPane.columnIndex>
+                    <GridPane.rowIndex>2</GridPane.rowIndex>
+                </Button>
+                <Button text="8" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>1</GridPane.columnIndex>
+                    <GridPane.rowIndex>2</GridPane.rowIndex>
+                </Button>
+                <Button text="9" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>2</GridPane.columnIndex>
+                    <GridPane.rowIndex>2</GridPane.rowIndex>
+                </Button>
+                <Button text="0" onAction="#calcButtonClicked">
+                    <GridPane.columnIndex>1</GridPane.columnIndex>
+                    <GridPane.rowIndex>3</GridPane.rowIndex>
+                    <GridPane.columnSpan>2</GridPane.columnSpan>
+                </Button>
+            </children>
+        </GridPane>
+    </center>
+</BorderPane>

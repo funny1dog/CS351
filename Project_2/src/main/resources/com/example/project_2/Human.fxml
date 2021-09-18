@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<Pane fx:id="pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="49.0" layoutY="26.0" prefHeight="349.0" prefWidth="151.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnReactionTime" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Reaction Time" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Aim Trainer" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Chimp Test" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Typing" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="200.0" layoutY="26.0" prefHeight="349.0" prefWidth="151.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Sequence Memory" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Number Memory" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Verbal Memory" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Visual Memeory" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="60.0" layoutY="386.0" prefHeight="48.0" prefWidth="280.0">
+         <children>
+            <Label prefHeight="16.0" prefWidth="299.0" text="Welcome to Human Benchmark V0.1." />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="16.0" prefWidth="299.0" text="Now you are playing as " />
+         </children>
+      </VBox>
+   </children>
+</Pane>

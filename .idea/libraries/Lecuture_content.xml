@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Lecuture content">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Lecuture content/lecture02.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Lecuture content/lecture04_calculator_examples.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Lecuture content/lecture03_javafx_color_illusion_examples.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
