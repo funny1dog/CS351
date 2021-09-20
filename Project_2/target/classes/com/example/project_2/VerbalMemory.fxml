@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_2.VerbalMemory">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="456.0" prefWidth="375.0">
+         <children>
+            <Button fx:id="btnSeen" layoutX="75.0" layoutY="397.0" mnemonicParsing="false" onAction="#btnSeenAction" text="SEEN" />
+            <Button fx:id="btnNew" layoutX="252.0" layoutY="397.0" mnemonicParsing="false" onAction="#btnNewAction" text="NEW" />
+            <TextArea fx:id="textAreaWords" layoutX="75.0" layoutY="107.0" prefHeight="272.0" prefWidth="232.0" />
+            <Label fx:id="lblLives" layoutX="75.0" layoutY="49.0" prefHeight="38.0" prefWidth="68.0" text="Lives |  3" />
+            <Label fx:id="lblScore" layoutX="238.0" layoutY="49.0" prefHeight="38.0" prefWidth="68.0" text="Score |  3" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
