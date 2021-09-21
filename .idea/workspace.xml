@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6e85c3b1-4b81-4871-97d8-b8a620d4aa93" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Lab_01_Bing/Lab_01_Bing.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_01_SX/Lab_01_SX.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_02/Lab_02.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture 7/Lecture 7.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 1/Project 1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/Project 2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project ANS/Project ANS.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +40,26 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS351-1/lab2/src" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/azul-16.0.2" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="SoManyPagesMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6e85c3b1-4b81-4871-97d8-b8a620d4aa93" name="Changes" comment="" />
@@ -37,5 +69,35 @@
       <updated>1631481445669</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="120" y="278" key="#Project_Structure" timestamp="1632178607503">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="120" y="278" key="#Project_Structure/0.0.2560.1400@0.0.2560.1400" timestamp="1632178607503" />
+    <state x="337" y="307" key="#Unnamed" timestamp="1632178592356">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="337" y="307" key="#Unnamed/0.0.2560.1400@0.0.2560.1400" timestamp="1632178592356" />
+    <state x="292" y="655" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632178579332">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="292" y="655" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1632178579332" />
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1632177703974">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1632177703974" />
   </component>
 </project>
