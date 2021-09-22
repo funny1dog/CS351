@@ -31,12 +31,9 @@ public class ReactionTimeController extends MiniGame {
         this.scene = scene;
     }
 
-    /*
     public void setRecMain(Rectangle recMain){
         this.recMain = recMain;
     }
-
-     */
 
     public void ActionMenuMainPage(ActionEvent actionEvent) {
         FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
@@ -70,23 +67,22 @@ public class ReactionTimeController extends MiniGame {
         timer.start();
 }
 
-
-    public void setRecMain(Rectangle recMain) {
-        ReactionTimeController.recMain = recMain;
-    }
-
-    public static Rectangle getRecMain() {
-        return recMain;
-    }
-    
     public void mouseClick (MouseEvent mouseEvent){
         System.out.println("test");
-        recMain.setFill(Color.WHITE);
-        /*
         setRecMain(recMain);
         FXMLLoader loadermouseClick = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
+        ReactionTimeController controller = loadermouseClick.getController();
+        controller.setRecMain(recMain);
         try {
-            Rectangle recMain = loadermouseClick.get();
+            Rectangle recMain = loadermouseClick.load();
+            recMain.setFill(Color.WHITE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        /*
+        try {
             recMain.setFill((Color.WHITE));
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,15 +93,6 @@ public class ReactionTimeController extends MiniGame {
 
 
     }
-
-
-
-
-
-
-
-
-
 
     @Override
     public void initializeWindow(Stage primaryStage) {
