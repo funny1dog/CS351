@@ -14,12 +14,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ReactionTimeController extends MiniGame {
+
     @FXML public Rectangle recMain;
     @FXML public Label lblMain;
     private Scene scene;
     private boolean gameRunning;
     private boolean clickReady;
     private long startTime;
+
 
     public ReactionTimeController(/*String n, String unit, boolean inverse*/) {
         //super(n, unit, inverse);
@@ -28,6 +30,13 @@ public class ReactionTimeController extends MiniGame {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
+
+    /*
+    public void setRecMain(Rectangle recMain){
+        this.recMain = recMain;
+    }
+
+     */
 
     public void ActionMenuMainPage(ActionEvent actionEvent) {
         FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
@@ -61,26 +70,38 @@ public class ReactionTimeController extends MiniGame {
         timer.start();
 }
 
+
     public void setRecMain(Rectangle recMain) {
-        this.recMain = recMain;
+        ReactionTimeController.recMain = recMain;
     }
 
-    public void mouseclick (MouseEvent mouseEvent){
+    public static Rectangle getRecMain() {
+        return recMain;
+    }
+    
+    public void mouseClick (MouseEvent mouseEvent){
         System.out.println("test");
-        setRecMain(recMain);
-        recMain.setFill((Color.WHITE));
+        recMain.setFill(Color.WHITE);
         /*
-        if (clickReady) {
-            recMain.setFill(Color.WHITE);
-        }
-        else {
-           recMain.setFill(Color.RED);
+        setRecMain(recMain);
+        FXMLLoader loadermouseClick = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
+        try {
+            Rectangle recMain = loadermouseClick.get();
+            recMain.setFill((Color.WHITE));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
          */
 
 
+
     }
+
+
+
+
+
 
 
 
