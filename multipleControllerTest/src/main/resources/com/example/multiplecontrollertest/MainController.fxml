@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="MainController">
+    <children>
+        <HBox layoutX="163.0" layoutY="135.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <fx:include fx:id="part1" source="part1.fxml"/>
+                <fx:include fx:id="part2" source="part2.fxml"/>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="174.0"
+           prefWidth="191.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controller.Part1Controller">
+    <children>
+        <Button fx:id="button" mnemonicParsing="false" onAction="#onButtonAction" text="Button"/>
+    </children>
+</StackPane>

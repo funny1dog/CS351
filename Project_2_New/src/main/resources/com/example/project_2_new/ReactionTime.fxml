@@ -9,22 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="400.0"
-            prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.project_2_new.ReactionTimeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_2_new.ReactionTimeController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
                         <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
-                        <MenuItem fx:id="MenuPaint" mnemonicParsing="false" text="Print Score" />
+                        <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
                         <MenuItem fx:id="MenuClose" mnemonicParsing="false" text="Close" />
                     </items>
                 </Menu>
@@ -42,6 +34,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="239.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="373.0" />
             <Button layoutX="14.0" layoutY="268.0" mnemonicParsing="false" text="Button" />
             <Button layoutX="14.0" layoutY="306.0" mnemonicParsing="false" text="Button" />
+            <Label fx:id="lblMain" layoutX="13.0" layoutY="13.0" onMouseClicked="#mouseclick" prefHeight="241.0" prefWidth="374.0" text="Get Ready..." textAlignment="CENTER" textFill="WHITE" />
          </children>
         </Pane>
     </center>

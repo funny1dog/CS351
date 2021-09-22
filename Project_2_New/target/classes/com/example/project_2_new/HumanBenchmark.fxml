@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -8,28 +9,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="400.0"
-            prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.project_2_new.HumanBenchmarkController"
->
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_2_new.HumanBenchmarkController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Game">
             <items>
                 <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
-                <MenuItem fx:id="MenuPaint" mnemonicParsing="false" text="Print Score" />
-                <MenuItem fx:id="MenuClose" mnemonicParsing="false" onAction="#WTFCLOSE" text="Close"/>
+                  <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
+                <MenuItem fx:id="MenuClose" mnemonicParsing="false" onAction="#WTFCLOSE" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
+                <MenuItem fx:id="MenuPaint" mnemonicParsing="false" text="Print Score" />
               <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" text="About" />
             </items>
           </Menu>
@@ -39,9 +32,35 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="BtnReactionTime" layoutX="31.0" layoutY="106.0" mnemonicParsing="false" text="Reaction Time" />
-            <Button fx:id="BtnTest" layoutX="31.0" layoutY="159.0" mnemonicParsing="false" text="Button" />
+            <VBox layoutX="188.0" layoutY="10.0" prefHeight="320.0" prefWidth="180.0" spacing="5.0">
+               <children>
+                  <Button fx:id="BtnAimTrainer" mnemonicParsing="false" onAction="#ActionBtnAimTrainer" prefHeight="80.0" prefWidth="160.0" text="Aim Trainer" />
+                  <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Sequence Memory" />
+                  <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Chimp Test" />
+                  <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Visual Memory" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox layoutX="14.0" layoutY="10.0" prefHeight="320.0" prefWidth="180.0" spacing="5.0">
+               <children>
+                  <Button fx:id="BtnReactionTime" mnemonicParsing="false" onAction="#ActionBtnReactionTime" prefHeight="80.0" prefWidth="160.0" text="Reaction Time" />
+                  <Button fx:id="BtnTest" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Number Memory" />
+                  <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Tryping Test" />
+                  <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Verbal Memory" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
       </Pane>
    </center>
    <left>
