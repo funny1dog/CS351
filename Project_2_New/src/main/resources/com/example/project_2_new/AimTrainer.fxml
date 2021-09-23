@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_2_new.ReactionTimeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_2_new.AimTrainerController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -31,14 +31,15 @@
     <center>
         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="239.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="373.0" />
-            <Button layoutX="14.0" layoutY="268.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="14.0" layoutY="306.0" mnemonicParsing="false" text="Button" />
+            <Circle fill="DODGERBLUE" layoutX="88.0" layoutY="97.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
         </Pane>
     </center>
     <left>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Remaining: 30" />
+         </children></VBox>
     </left>
     <right>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />

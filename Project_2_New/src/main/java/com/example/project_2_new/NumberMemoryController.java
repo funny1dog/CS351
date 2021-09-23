@@ -7,13 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ReactionTimeController extends MiniGame {
+public class NumberMemoryController extends MiniGame {
 
     @FXML
     public Rectangle recMain;
@@ -25,7 +24,7 @@ public class ReactionTimeController extends MiniGame {
     private long startTime;
 
 
-    public ReactionTimeController(/*String n, String unit, boolean inverse*/) throws Exception {
+    public NumberMemoryController(/*String n, String unit, boolean inverse*/) throws Exception {
         //super(n, unit, inverse);
     }
 

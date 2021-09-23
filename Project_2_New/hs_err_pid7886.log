@@ -1,0 +1,53 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00000001109d6c48, pid=7886, tid=259
+#
+# JRE version: OpenJDK Runtime Environment Zulu16.32+15-CA (16.0.2+7) (build 16.0.2+7)
+# Java VM: OpenJDK 64-Bit Server VM Zulu16.32+15-CA (16.0.2+7, mixed mode, tiered, compressed oops, compressed class ptrs, g1 gc, bsd-aarch64)
+# Problematic frame:
+# J 2079 c1 jdk.internal.reflect.Reflection.verifyModuleAccess(Ljava/lang/Module;Ljava/lang/Class;)Z java.base@16.0.2 (24 bytes) @ 0x00000001109d6c48 [0x00000001109d6c40+0x0000000000000008]
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.azul.com/support/
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=57934:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 --module-path=/Users/zhibin/.m2/repository/org/openjfx/javafx-fxml/16/javafx-fxml-16-mac.jar:/Users/zhibin/.m2/repository/org/openjfx/javafx-base/16/javafx-base-16-mac.jar:/Users/zhibin/.m2/repository/org/openjfx/javafx-graphics/16/javafx-graphics-16-mac.jar:/Users/zhibin/Documents/GitHub/CS351/Project_2_New/target/classes:/Users/zhibin/.m2/repository/org/openjfx/javafx-controls/16/javafx-controls-16-mac.jar -Djdk.module.main=com.example.project_2_new com.example.project_2_new/com.example.project_2_new.HumanBenchmark
+
+Host: MacBookAir10,1 arm64 1 MHz, 8 cores, 8G, Darwin 20.6.0, macOS 11.5.2 (20G95)
+Time: Wed Sep 22 18:39:28 2021 MDT elapsed time: 2.762827 seconds (0d 0h 0m 2s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000001348cfc00):  JavaThread "JavaFX Application Thread" [_thread_in_Java, id=259, stack(0x000000016cfcc000,0x000000016efcc000)]
+
+Stack: [0x000000016cfcc000,0x000000016efcc000],  sp=0x000000016e7e3fb0,  free space=24671k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J 2079 c1 jdk.internal.reflect.Reflection.verifyModuleAccess(Ljava/lang/Module;Ljava/lang/Class;)Z java.base@16.0.2 (24 bytes) @ 0x00000001109d6c48 [0x00000001109d6c40+0x0000000000000008]
+V  [libjvm.dylib+0x4e3af4]  JVM_GetClassModifiers+0x16c
+J 688  java.lang.Class.getModifiers()I java.base@16.0.2 (0 bytes) @ 0x0000000117b3ccbc [0x0000000117b3cc40+0x000000000000007c]
+C  0x000000016e7e4250
+
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 2 (SEGV_ACCERR), si_addr: 0x000000016e7cffb0
+
+Register to memory mapping:
+
+ x0=0x00000007403f6fe8 is an oop: java.lang.Class 
+{0x00000007403f6fe8} - klass: 'java/lang/Class'
+ x1=0x00000007404f42b0 is an oop: java.lang.Module 
+{0x00000007404f42b0} - klass: 'java/lang/Module'
+ x2=0x00000007403f6fe8 is an oop: java.lang.Class 
+{0x00000007403f6fe8} - klass: 'java/lang/Class'
+ x3=0x0 is NULL
+ x4=0x0000000000000401 is an unknown value
+ x5=0x0000000141b51db0 is pointing into metadata
+ x6=0x000000000000374f is an unknown value
+ x7=0x00000007403ef4d8 is an oop: java.lang.Class 
+{0x00000007403ef4d8} - klass: 'java/lang/Class'
+ x8=0x000000000000374f is an unknown value
+ x9=
