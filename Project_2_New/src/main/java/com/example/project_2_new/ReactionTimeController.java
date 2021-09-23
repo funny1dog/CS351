@@ -33,18 +33,15 @@ public class ReactionTimeController extends MiniGame {
         this.scene = scene;
     }
 
-    public void setRecMain(Rectangle recMain) {
-        this.recMain = recMain;
-    }
-
-    public void ActionMenuMainPage(ActionEvent actionEvent) {
-        FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
+    public void ActionMenuMainPage(ActionEvent actionEvent) throws IOException {
+       FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
         try {
-            Pane newRoot = loaderMainMenu.load();
-            scene.setRoot(newRoot);
+            Pane mainBorderPane = loaderMainMenu.load();
+            scene.setRoot(mainBorderPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
@@ -69,43 +66,11 @@ public class ReactionTimeController extends MiniGame {
         timer.start();
     }
 
-    public void mouseClick(MouseEvent mouseEvent) throws IOException {
 
-        // the following works
-        System.out.println("test");
-        //setRecMain(recMain);
-        FXMLLoader loaderActionReaction = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
-        Scene RTScene = new Scene(loaderActionReaction.load());
-        this.scene = RTScene;
-        Rectangle recMain = (Rectangle) RTScene.lookup("#myBtnID");
-        setRecMain(recMain);
-        //recMain.setFill(Color.WHITE);
+    public void mouseClick(MouseEvent mouseEvent)  {
+        recMain.setFill(Color.WHITE);
 
     }
-
-        /*
-        try {
-            Scene RTScene = loaderActionReaction.load();
-            Rectangle recMain = (Rectangle) RTScene.lookup("#myBtnID");
-            setRecMain(recMain);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-        /*
-        FXMLLoader loadermouseClick = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
-        ReactionTimeController controller = loadermouseClick.getController();
-        controller.setRecMain(controller.recMain);
-        try {
-            Rectangle recMain = loadermouseClick.load();
-            recMain.setFill(Color.WHITE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-         */
-
-
     @Override
     public void initializeWindow(Stage primaryStage) {
 

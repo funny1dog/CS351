@@ -14,7 +14,7 @@ public class SequenceMemory extends MiniGame{
 
         FXMLLoader fxmlLoader = new FXMLLoader(HumanBenchmark.class.getResource("ReactionTime.fxml"));
         ReactionTimeController controller = fxmlLoader.getController();
-        controller.setRecMain(controller.recMain);
+        //controller.setRecMain(controller.recMain);
 
 
     }

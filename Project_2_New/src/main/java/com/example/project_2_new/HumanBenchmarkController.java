@@ -26,15 +26,16 @@ public class HumanBenchmarkController implements Initializable {
     private Button BtnTest;
     private Scene scene;
 
+
     public void setScene(Scene scene) {
         this.scene = scene;
     }
+
     @Override
     // get to different panels
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
 
     // menu control
     public void WTFCLOSE(ActionEvent actionEvent) {
@@ -51,12 +52,15 @@ public class HumanBenchmarkController implements Initializable {
         }
     }
 
+    public void ActionMenuPrint(ActionEvent actionEvent){};
 
     // mini games
     public void ActionBtnReactionTime(ActionEvent actionEvent) {
         FXMLLoader loaderActionReaction = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
         try {
             Pane newRoot = loaderActionReaction.load();
+            ReactionTimeController controller = loaderActionReaction.getController();
+            controller.setScene(scene);
             scene.setRoot(newRoot);
         } catch (IOException e) {
             e.printStackTrace();
