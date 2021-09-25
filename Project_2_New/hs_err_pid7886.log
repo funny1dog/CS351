@@ -16,7 +16,7 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=57934:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 --module-path=/Users/zhibin/.m2/repository/org/openjfx/javafx-fxml/16/javafx-fxml-16-mac.jar:/Users/zhibin/.m2/repository/org/openjfx/javafx-base/16/javafx-base-16-mac.jar:/Users/zhibin/.m2/repository/org/openjfx/javafx-graphics/16/javafx-graphics-16-mac.jar:/Users/zhibin/Documents/GitHub/CS351/Project_2_New/target/classes:/Users/zhibin/.m2/repository/org/openjfx/javafx-controls/16/javafx-controls-16-mac.jar -Djdk.module.main=com.example.project_2_new com.example.project_2_new/com.example.project_2_new.HumanBenchmark
+Command Line: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=57934:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 --module-path=/Users/zhibin/.m2/repository/org/openjfx/javafx-fxml/16/javafx-fxml-16-mac.jar:/Users/zhibin/.m2/repository/org/openjfx/javafx-base/16/javafx-base-16-mac.jar:/Users/zhibin/.m2/repository/org/openjfx/javafx-graphics/16/javafx-graphics-16-mac.jar:/Users/zhibin/Documents/GitHub/CS351/Project_2_New/target/classes:/Users/zhibin/.m2/repository/org/openjfx/javafx-controls/16/javafx-controls-16-mac.jar -Djdk.module.main=com.example.project_2_new com.example.project_2_new/HumanBenchmark
 
 Host: MacBookAir10,1 arm64 1 MHz, 8 cores, 8G, Darwin 20.6.0, macOS 11.5.2 (20G95)
 Time: Wed Sep 22 18:39:28 2021 MDT elapsed time: 2.762827 seconds (0d 0h 0m 2s)

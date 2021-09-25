@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HumanBenchmark.ChimpTestController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Game">
+                    <items>
+                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
+                        <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
+                        <MenuItem fx:id="MenuClose" mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox layoutX="-1.0" layoutY="14.0" prefHeight="336.0" prefWidth="398.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="50.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Button" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+        </Pane>
+    </center>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+    </left>
+    <right>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+    </right>
+</BorderPane>
