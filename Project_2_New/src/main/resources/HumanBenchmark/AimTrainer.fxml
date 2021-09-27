@@ -28,20 +28,21 @@
             </menus>
         </MenuBar>
     </top>
-    <center>
-        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Circle fill="DODGERBLUE" layoutX="88.0" layoutY="97.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
-         </children>
-        </Pane>
-    </center>
     <left>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Remaining: 30" />
+            <Label fx:id="labelRemaining" text="Remaining: 30" />
+            <Button fx:id="BtnStart" mnemonicParsing="false" onAction="#ActionBtnStart" text="Start" />
          </children></VBox>
     </left>
     <right>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
     </right>
+   <center>
+      <AnchorPane fx:id="centerScreen" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Circle fx:id="target" fill="DODGERBLUE" layoutX="69.0" layoutY="66.0" onMouseClicked="#mouseClick" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

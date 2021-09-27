@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -31,18 +32,23 @@
     <center>
         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="173.0" layoutY="305.0" mnemonicParsing="false" text="Next" />
-            <VBox layoutX="66.0" layoutY="25.0" prefHeight="200.0" prefWidth="257.0">
+            <Button fx:id="btnNext" layoutX="120.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionBtnNext" text="Next" />
+            <VBox alignment="TOP_CENTER" layoutX="66.0" layoutY="25.0" prefHeight="200.0" prefWidth="257.0" spacing="10.0">
                <children>
                   <Label text="Number" />
-                  <Label text="2" />
+                  <Label fx:id="questionNumber" />
                   <Label text="Your Answer" />
-                  <Label text="2" />
+                  <Label fx:id="userInput" />
                   <Label text="Level" />
-                  <Label text="Level 1" />
+                  <Label fx:id="userlevel" text="1" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </VBox>
-            <TextField layoutX="120.0" layoutY="255.0" text="Enter the Number here" />
+            <TextField fx:id="userInputTextField" layoutX="120.0" layoutY="255.0" text="Enter the Number here" />
+            <Button fx:id="btnNew" layoutX="294.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionBtnNew" text="New Game" />
+            <Button fx:id="btnSubmit" layoutX="225.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionBtnSubmit" text="Submit" />
          </children>
         </Pane>
     </center>

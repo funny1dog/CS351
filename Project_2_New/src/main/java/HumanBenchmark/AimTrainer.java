@@ -7,8 +7,6 @@ import java.io.IOException;
 
 public class AimTrainer extends MiniGame{
 
-
-
     public AimTrainer(/*String n, String unit, boolean inverse*/) throws IOException {
         //super("Reaction Time", "ms", true);
 

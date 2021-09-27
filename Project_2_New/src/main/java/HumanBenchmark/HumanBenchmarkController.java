@@ -66,9 +66,6 @@ public class HumanBenchmarkController extends AbstractController implements Init
 
     // mini games
     public void ActionBtnReactionTime(ActionEvent actionEvent) throws IOException {
-        // popout window relatded;
-//        HashMap<String, Object> resultMap = showPopupWindow();
-//
         // don't touch this part;
         FXMLLoader loaderActionReaction = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
         try {
@@ -108,18 +105,22 @@ public class HumanBenchmarkController extends AbstractController implements Init
     public void ActionBtnAimTrainer(ActionEvent actionEvent) {
     FXMLLoader loaderActionBtnAimTrainer = new FXMLLoader(getClass().getResource("AimTrainer.fxml"));
         try {
-        Pane newRoot = loaderActionBtnAimTrainer.load();
-        scene.setRoot(newRoot);
+        Pane newRoot2 = loaderActionBtnAimTrainer.load();
+        AimTrainerController controller = loaderActionBtnAimTrainer.getController();
+        controller.setScene(scene);
+        scene.setRoot(newRoot2);
     } catch (IOException e) {
         e.printStackTrace();
     }
 }
 
     public void ActionBtnSequenceMemory(ActionEvent actionEvent) {
-        FXMLLoader loaderActionBtnSequenceMemory = new FXMLLoader(getClass().getResource("SequenceMemory.fxml"));
+        FXMLLoader loaderBtnSequenceMemory = new FXMLLoader(getClass().getResource("AimTrainer.fxml"));
         try {
-            Pane newRoot = loaderActionBtnSequenceMemory.load();
-            scene.setRoot(newRoot);
+            Pane newRoot3 = loaderBtnSequenceMemory.load();
+            AimTrainerController controller = loaderBtnSequenceMemory.getController();
+            controller.setScene(scene);
+            scene.setRoot(newRoot3);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -147,10 +148,12 @@ public class HumanBenchmarkController extends AbstractController implements Init
     }
 
     public void actionBtnNumberMemory(ActionEvent actionEvent) {
-        FXMLLoader loaderActionBtnNumberMemory = new FXMLLoader(getClass().getResource("NumberMemory.fxml"));
+        FXMLLoader loaderBtnNumberMemory = new FXMLLoader(getClass().getResource("NumberMemory.fxml"));
         try {
-            Pane newRoot = loaderActionBtnNumberMemory.load();
-            scene.setRoot(newRoot);
+            Pane newRoot6 = loaderBtnNumberMemory.load();
+            NumberMemoryController controller = loaderBtnNumberMemory.getController();
+            controller.setScene(scene);
+            scene.setRoot(newRoot6);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -168,10 +171,12 @@ public class HumanBenchmarkController extends AbstractController implements Init
     }
 
     public void ActionBtnVerbalMemory(ActionEvent actionEvent) {
-        FXMLLoader ActionBtnVerbalMemory = new FXMLLoader(getClass().getResource("VerbalMemory.fxml"));
+        FXMLLoader loaderBtnVerbalMemory = new FXMLLoader(getClass().getResource("VerbalMemory.fxml"));
         try {
-            Pane newRoot = ActionBtnVerbalMemory.load();
-            scene.setRoot(newRoot);
+            Pane newRoot8 = loaderBtnVerbalMemory.load();
+            ReactionTimeController controller = loaderBtnVerbalMemory.getController();
+            controller.setScene(scene);
+            scene.setRoot(newRoot8);
         } catch (IOException e) {
             e.printStackTrace();
         }
