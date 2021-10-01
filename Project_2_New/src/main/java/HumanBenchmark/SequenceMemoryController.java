@@ -1,12 +1,10 @@
 package HumanBenchmark;
 
-import javafx.animation.Animation;
-import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SequenceMemoryController extends MiniGame {
 
@@ -139,51 +138,35 @@ public class SequenceMemoryController extends MiniGame {
         setupCanvas(lvl);
     }
 
+    private SequentialTransition playOneButton(int buttonIndex) {
+        PauseTransition setButtonColor = new PauseTransition(Duration.seconds(0));
+        setButtonColor.setOnFinished(e -> newButtons.get(buttonIndex).setStyle("-fx-base: #0096FF"));
+
+        PauseTransition maintainButtonColor = new PauseTransition(Duration.millis(500));
+        maintainButtonColor.setOnFinished(e -> newButtons.get(buttonIndex).setStyle(null));
+
+        PauseTransition addDelay = new PauseTransition(Duration.millis(500));
+
+        return new SequentialTransition(setButtonColor, maintainButtonColor, addDelay);
+    }
 
     public void setupCanvas(int lvl){
         Random rand = new Random();
         int randomIndex = rand.nextInt(allButtons.size());
         newButtons.add(allButtons.get(randomIndex));
         System.out.println(newButtons + "\n");
+        String btnID = newButtons.get(0).getId();
+        System.out.println("this is btnID: " + btnID );
 
-        for (int j = 0; j <newButtons.size(); j++) {
-            System.out.print(newButtons.get(j));
-            newButtons.get(j).setStyle("-fx-base: #0096FF");
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.play();
-            int finalJ = j;
-            pause.setOnFinished(e -> {
-                newButtons.get(finalJ).setStyle(null);
-            });
+        SequentialTransition[] steps = new SequentialTransition[newButtons.size()];
 
-//        }
+        for (int j = 0; j < newButtons.size(); ++j) {
+            steps[j] = playOneButton(j);
+        }
 
-//        System.out.print("lvl in setupCanvas: "+ lvl + "\n");
-//        lvl =1;
-//        Random rand = new Random();
-//        for (int i = 0; i <lvl; i++){
-//            int randomIndex = rand.nextInt(allButtons.size());
-//            newButtons.add(allButtons.get(randomIndex));
-//        }
-//
-//        System.out.print(newButtons);
-//
-//        for (int j = 0; j <lvl; j++){
-//            System.out.print(newButtons.get(j));
-//            newButtons.get(j).setStyle("-fx-base: #0096FF");
-//            PauseTransition pause = new PauseTransition(Duration.seconds(1));
-//            int finalJ = j;
-//            pause.setOnFinished(e ->{
-//                newButtons.get(finalJ).setStyle(null);
-//            });
-//            pause.play();
-//        }
-
+        SequentialTransition all = new SequentialTransition(steps);
+        all.play();
     }
-
-
-    }
-
 
     public void actionBtnReset(ActionEvent actionEvent) {
     }
