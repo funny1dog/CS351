@@ -35,23 +35,23 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
+                        <Button fx:id="btn0" mnemonicParsing="false" onMouseClicked="#mouseClickBtn0" prefHeight="100.0" prefWidth="100.0" />
+                        <Button fx:id="btn1" mnemonicParsing="false" onMouseClicked="#mouseClickBtn1" prefHeight="100.0" prefWidth="100.0" />
+                        <Button fx:id="btn2" mnemonicParsing="false" onMouseClicked="#mouseClickBtn2" prefHeight="100.0" prefWidth="100.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
+                        <Button fx:id="btn3" mnemonicParsing="false" onMouseClicked="#mouseClickBtn3" prefHeight="100.0" prefWidth="100.0" />
+                        <Button fx:id="btn4" mnemonicParsing="false" onMouseClicked="#mouseClickBtn4" prefHeight="100.0" prefWidth="100.0" />
+                        <Button fx:id="btn5" mnemonicParsing="false" onMouseClicked="#mouseClickBtn5" prefHeight="100.0" prefWidth="100.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" />
+                        <Button fx:id="btn6" mnemonicParsing="false" onMouseClicked="#mouseClickBtn6" prefHeight="100.0" prefWidth="100.0" />
+                        <Button fx:id="btn7" mnemonicParsing="false" onMouseClicked="#mouseClickBtn7" prefHeight="100.0" prefWidth="100.0" />
+                        <Button fx:id="btn8" mnemonicParsing="false" onMouseClicked="#mouseClickBtn8" prefHeight="100.0" prefWidth="100.0" />
                      </children>
                   </HBox>
                </children>
@@ -60,9 +60,17 @@
         </Pane>
     </center>
     <left>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnStart" mnemonicParsing="false" onAction="#actionBtnStart" text="START" />
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#actionBtnReset" text="RESET" />
+         </children></VBox>
     </left>
     <right>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblClick" text="Label" />
+            <Label fx:id="lblLvl" text="Label" />
+         </children></VBox>
     </right>
 </BorderPane>

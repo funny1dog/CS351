@@ -1,13 +1,13 @@
 package HumanBenchmark;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ChimpTest extends MiniGame{
-
-
 
     public ChimpTest(/*String n, String unit, boolean inverse*/) throws IOException {
         //super("Reaction Time", "ms", true);

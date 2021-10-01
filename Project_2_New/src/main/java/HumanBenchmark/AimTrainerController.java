@@ -76,8 +76,6 @@ public class AimTrainerController extends MiniGame {
             controller.setScene(scene);
             scene.setRoot(mainBorderPane);
             // trying to get back...
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

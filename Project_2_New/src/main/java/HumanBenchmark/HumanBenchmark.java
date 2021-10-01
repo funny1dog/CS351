@@ -74,3 +74,19 @@ public class HumanBenchmark extends Application {
     }
 
 }
+// gamestart()
+// put all buttons into an arraylist;
+// int streak = 0, int lives = 3; lvl - 1;
+// crate an empty arraylist;
+// from the arraylist, pick (lvl) random element, copy the element to a new array;
+    // if lives >0:
+        // change the color of the button to blue for 3 secs;
+        // for the newarray:
+            // find the size;
+            // random sort; [btn3, btn 10, btn6]
+            // for element(n), change the label to(n+1);
+            // mouse click on button: send item to userarray[]
+            // user can click the moust (n) times; if click == n times,
+                // match whether userinputarray[] == newarray[]
+                    // if yes > streak ++, lvl++
+                    // else life--;

@@ -1,0 +1,8 @@
+this
+is
+a
+simple
+dictionary
+for
+test
+only

@@ -1,28 +1,34 @@
 package HumanBenchmark;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class SequenceMemoryController extends MiniGame {
 
     @FXML
-    public Rectangle recMain;
-    @FXML
-    public Label lblMain;
+    public Button btn0, btn1, btn2, btn3, btn4,btn5,btn6,btn7,btn8, btnStart, btnReset;
+    @FXML public Label lblClick, lblLvl;
     private Scene scene;
-    private boolean gameRunning;
-    private boolean clickReady;
-    private long startTime;
 
+    private int totalMouseClick = 0;
+    private ArrayList<Button> allButtons = new ArrayList<Button>();
+    private ArrayList<Button> newButtons =new ArrayList<Button>();
+    private ArrayList<Button> userButtons =new ArrayList<Button>();
+    private int lvl;
 
     public SequenceMemoryController(/*String n, String unit, boolean inverse*/) throws Exception {
         //super(n, unit, inverse);
@@ -32,78 +38,41 @@ public class SequenceMemoryController extends MiniGame {
         this.scene = scene;
     }
 
-    public void setRecMain(Rectangle recMain) {
-        this.recMain = recMain;
+    public void setAllButtons(ArrayList allButtons) {
+        this.allButtons = allButtons;
     }
 
-    public void ActionMenuMainPage(ActionEvent actionEvent) {
+    public void setNewButtons(ArrayList newButtons) {
+        this.newButtons = newButtons;
+    }
+
+    public void setUserButtons(ArrayList userButtons) {
+        this.userButtons = userButtons;
+    }
+
+    public void setlvl(int lvl) {
+        this.lvl = lvl;
+    }
+
+
+    public void ActionMenuMainPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
         try {
-            Pane newRoot = loaderMainMenu.load();
-            scene.setRoot(newRoot);
+            Pane mainBorderPane = loaderMainMenu.load();
+            HumanBenchmarkController controller = loaderMainMenu.getController();
+            controller.setScene(scene);
+            scene.setRoot(mainBorderPane);
+            // trying to get back...
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
     public void playGame() {
 
-        Thread timer = new Thread(() -> {
-            Object o = new Object();
-            int rand = (int) (Math.random() * 5000) + 1500;
-            synchronized (o) {
-                try {
-                    o.wait(rand);
-                    if (gameRunning) {
-                        clickReady = true;
-                        startTime = System.nanoTime();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        clickReady = false;
-        timer.start();
     }
-
-    public void mouseClick(MouseEvent mouseEvent) throws IOException {
-
-        // the following works
-        System.out.println("test");
-        //setRecMain(recMain);
-        FXMLLoader loaderActionReaction = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
-        Scene RTScene = new Scene(loaderActionReaction.load());
-        this.scene = RTScene;
-        Rectangle recMain = (Rectangle) RTScene.lookup("#myBtnID");
-        setRecMain(recMain);
-        //recMain.setFill(Color.WHITE);
-
-    }
-
-        /*
-        try {
-            Scene RTScene = loaderActionReaction.load();
-            Rectangle recMain = (Rectangle) RTScene.lookup("#myBtnID");
-            setRecMain(recMain);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-        /*
-        FXMLLoader loadermouseClick = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));
-        ReactionTimeController controller = loadermouseClick.getController();
-        controller.setRecMain(controller.recMain);
-        try {
-            Rectangle recMain = loadermouseClick.load();
-            recMain.setFill(Color.WHITE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-         */
-
 
     @Override
     public void initializeWindow(Stage primaryStage) {
@@ -113,5 +82,53 @@ public class SequenceMemoryController extends MiniGame {
     @Override
     public void instructionsPopUp() {
 
+    }
+
+
+    public void gameStart(){
+
+    }
+
+    public void actionBtnStart(ActionEvent actionEvent) {
+        setAllButtons(allButtons);
+        allButtons.add(btn0);
+        allButtons.add(btn1);
+        allButtons.add(btn2);
+        allButtons.add(btn3);
+        allButtons.add(btn4);
+        allButtons.add(btn5);
+        allButtons.add(btn6);
+        allButtons.add(btn7);
+        allButtons.add(btn8);
+    }
+
+    public void actionBtnReset(ActionEvent actionEvent) {
+    }
+
+    public void mouseClickBtn0(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn1(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn2(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn3(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn4(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn5(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn6(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn7(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickBtn8(MouseEvent mouseEvent) {
     }
 }
