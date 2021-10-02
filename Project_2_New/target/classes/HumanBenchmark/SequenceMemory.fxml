@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -15,14 +16,13 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
-                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
-                        <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" text="Main Page" />
-                        <MenuItem fx:id="MenuClose" mnemonicParsing="false" text="Close" />
+                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" onAction="#menuNewGame" text="New Game" />
+                        <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" text="About" />
+                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" onAction="#menuAbout" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -60,17 +60,15 @@
         </Pane>
     </center>
     <left>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnStart" mnemonicParsing="false" onAction="#actionBtnStart" text="START" />
-            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#actionBtnReset" text="RESET" />
-         </children></VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
     </left>
     <right>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblClick" text="Label" />
-            <Label fx:id="lblLvl" text="Label" />
+            <Label fx:id="lblLvl" text="Level: ">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
          </children></VBox>
     </right>
 </BorderPane>

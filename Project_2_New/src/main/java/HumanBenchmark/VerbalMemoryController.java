@@ -3,9 +3,14 @@ package HumanBenchmark;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -91,8 +96,8 @@ public class VerbalMemoryController extends MiniGame{
         setListOfWords(listOfWords);
         seenwords.add(wordOfDisplay);
     }
-    // conditions:
-    // user hitting new button:
+
+
     public void actionBtnNew(ActionEvent actionEvent) {
         setLives(lives);
         setScores(scores);
@@ -101,6 +106,9 @@ public class VerbalMemoryController extends MiniGame{
         if (seenwords.contains(wordOfDisplay)){
             lives --;
             labelLives.setText("Lives: "+lives);
+            if (lives == 0){
+                gameOverPopOut(scores);
+            }
         }
         else {
             scores++;
@@ -116,16 +124,17 @@ public class VerbalMemoryController extends MiniGame{
         setSeenwords(seenwords);
         // if word is in arraylist => score++
         if (seenwords.contains(wordOfDisplay)){
-
             scores++;
             System.out.print(scores);
             labelScore.setText("Scores: "+scores);
         }
         // if word is not in arraylist => life--
         else {
-            lives--;
-            addWord();
+            lives --;
             labelLives.setText("Lives: "+lives);
+            if (lives == 0){
+                gameOverPopOut(scores);
+            }
         }
         generateWord();
         if (lives ==0){
@@ -161,6 +170,107 @@ public class VerbalMemoryController extends MiniGame{
 
         labelLives.setText("Lives: " + lives);
         labelScore.setText("Score: " + scores);
+    }
+    public void newRound() throws IOException {
+        readFile();
+        generateWord();
+        setLives(lives);
+        setScores(scores);
+        setSeenwords(seenwords);
+
+        lives = 3;
+        scores = 0;
+        seenwords.clear();
+
+        labelLives.setText("Lives: " + lives);
+        labelScore.setText("Score: " + scores);
+    }
+
+    private void gameOverPopOut(int scores) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Game Over! \n" +
+                "Your score is: " + scores + " points");
+        Button startButton = new Button("Try Again!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Game Over");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            try {
+                newRound();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+    }
+
+    public void menuNewGame(ActionEvent actionEvent) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Verbal Memory \n" +
+                "You will be shown words, one at a time. \n" +
+                "If you have seen a word during the test, click SEEN \n" +
+                "If it's a new word, click NEW \n" +
+                "Click Start to start");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Number Memory Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            try {
+                newRound();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+
+    }
+
+    public void menuAbout(ActionEvent actionEvent) {
+        Stage instructionStage = new Stage();
+        Label instructions = new Label ("CS351 Homework Project 2 \n" +
+                "Human benchmark version 0.1" +
+                "Zhibin 'Bing' Hong \n" +
+                "hong@unm.edu \n");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        instructionStage.initModality(Modality.APPLICATION_MODAL);
+        instructionStage.initOwner(getGameStage());
+        instructionStage.setAlwaysOnTop(true);
+        instructionStage.setTitle("Reaction Time Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            instructionStage.close();
+        });
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        instructionStage.setScene(scene);
+        instructionStage.show();
     }
 }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
@@ -16,14 +17,13 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
-                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
+                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" onAction="#menuNewGame" text="New Game" />
                         <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
-                        <MenuItem fx:id="MenuClose" mnemonicParsing="false" text="Close" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" text="About" />
+                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" onAction="#menuAbout" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -35,11 +35,20 @@
             <Button fx:id="btnNext" layoutX="120.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionBtnNext" text="Next" />
             <VBox alignment="TOP_CENTER" layoutX="66.0" layoutY="25.0" prefHeight="200.0" prefWidth="257.0" spacing="10.0">
                <children>
-                  <Label text="Number" />
+                  <Label text="Number">
+                     <font>
+                        <Font size="29.0" />
+                     </font></Label>
                   <Label fx:id="questionNumber" />
-                  <Label text="Your Answer" />
+                  <Label text="Your Answer">
+                     <font>
+                        <Font size="30.0" />
+                     </font></Label>
                   <Label fx:id="userInput" />
-                  <Label text="Level" />
+                  <Label text="Level">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                   <Label fx:id="userlevel" text="1" />
                </children>
                <opaqueInsets>
@@ -47,7 +56,6 @@
                </opaqueInsets>
             </VBox>
             <TextField fx:id="userInputTextField" layoutX="120.0" layoutY="255.0" text="Enter the Number here" />
-            <Button fx:id="btnNew" layoutX="294.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionBtnNew" text="New Game" />
             <Button fx:id="btnSubmit" layoutX="225.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionBtnSubmit" text="Submit" />
          </children>
         </Pane>

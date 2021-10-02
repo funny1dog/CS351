@@ -37,49 +37,4 @@ public abstract class MiniGame{
 
     public Stage getGameStage() { return gameStage; }
 
-    /*
-    public void gameOverPopUp(){
-        Stage gameOverStage = new Stage();
-        Label finalScore = new Label("Final Score: "+currScore+scoreUnit);
-        Label highScoreLabel = new Label("New High Score!");
-        HBox buttonPanel = new HBox(10);
-        Button retryButton = new Button("Retry");
-        Button backButton = new Button("Back");
-        BorderPane border = new BorderPane();
-        Scene scene;
-        gameOverStage.initModality(Modality.APPLICATION_MODAL);
-        gameOverStage.initOwner(gameStage);
-        gameOverStage.setAlwaysOnTop(true);
-        gameOverStage.setTitle("Game Over");
-        backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            gameStage.close();
-            gameOverStage.close();
-        });
-        retryButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            instructionsPopUp();
-            gameOverStage.close();
-        });
-        buttonPanel.getChildren().addAll(retryButton, backButton);
-        buttonPanel.setAlignment(Pos.CENTER);
-        finalScore.setFont(new Font(20));
-        highScoreLabel.setFont(new Font(20));
-        border.setCenter(finalScore);
-        border.setBottom(buttonPanel);
-        BorderPane.setAlignment(buttonPanel, Pos.CENTER);
-        if(currScore > highScore && !inverseScore){
-            highScore = currScore;
-            border.setTop(highScoreLabel);
-            BorderPane.setAlignment(highScoreLabel, Pos.CENTER);
-        }
-        if(currScore<highScore && inverseScore|| inverseScore && highScore==0){
-            highScore = currScore;
-            border.setTop(highScoreLabel);
-            BorderPane.setAlignment(highScoreLabel, Pos.CENTER);
-        }
-        scene = new Scene(border, 200, 150);
-        gameOverStage.setScene(scene);
-        gameOverStage.show();
-    }
-
-     */
 }

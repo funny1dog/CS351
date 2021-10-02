@@ -62,9 +62,7 @@ public class HumanBenchmarkController extends AbstractController implements Init
         }
     }
 
-    public void ActionMenuPrint(ActionEvent actionEvent){};
 
-    // mini games
     public void ActionBtnReactionTime(ActionEvent actionEvent) throws IOException {
         // don't touch this part;
         FXMLLoader loaderActionReaction = new FXMLLoader(getClass().getResource("ReactionTime.fxml"));

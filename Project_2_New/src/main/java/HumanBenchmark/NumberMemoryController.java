@@ -6,12 +6,16 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -37,8 +41,6 @@ public class NumberMemoryController extends MiniGame {
     private int generatedNumber;
     private int digitOfNumber= 0;
     private int userinputNumber;
-    private boolean visible;
-    private boolean roundEnd;
 
     public NumberMemoryController(/*String n, String unit, boolean inverse*/) throws Exception {
 
@@ -52,6 +54,7 @@ public class NumberMemoryController extends MiniGame {
         this.userInput = userInput;
     }
 
+    public void setDigitOfNumber(int digitOfNumber) {this.digitOfNumber = digitOfNumber;}
     public void ActionMenuMainPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
         try {
@@ -67,7 +70,6 @@ public class NumberMemoryController extends MiniGame {
         }
 
     }
-
 
     @Override
     public void playGame() {
@@ -144,7 +146,25 @@ public class NumberMemoryController extends MiniGame {
         return generatedNumber;
 
     }
+
+    public int newRound(){
+        digitOfNumber ++;
+        System.out.println(digitOfNumber);
+        userlevel.setText(String.valueOf(digitOfNumber));
+        generatedNumber = generateRandomDigits(digitOfNumber);
+        questionNumber.setText(String.valueOf(generatedNumber));
+        System.out.println(generatedNumber);
+
+        PauseTransition pause = new PauseTransition(
+                Duration.seconds(3)
+        );
+        pause.setOnFinished(e -> {questionNumber.setText("????");
+        });
+        pause.play();
+        return generatedNumber;
+    }
     public void actionBtnSubmit(ActionEvent actionEvent) {
+        setDigitOfNumber(digitOfNumber);
         setUserInput(userInput);
         userinputNumber = Integer.parseInt(userInputTextField.getText());
         System.out.println(userinputNumber);
@@ -155,137 +175,92 @@ public class NumberMemoryController extends MiniGame {
         }
         else {
             System.out.print("does not match");
+            gameOverPopOut(digitOfNumber);
+            digitOfNumber = 0;
         }
-
-        //return userinputNumber;
-
-
     }
 
-    public void actionBtnNew(ActionEvent actionEvent) {
+    private void gameOverPopOut(int digitOfNumber) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Game Over! \n" +
+                "Your score is: " + digitOfNumber + " points");
+        Button startButton = new Button("Try Again!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Game Over");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            newRound();
+        });
 
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
     }
 
     public int generateRandomDigits(int n) {
         int m = (int) Math.pow(10, n - 1);
         int p = m + new Random().nextInt(9 * m);
-        //System.out.println(p);
         return p;
     }
 
+    public void menuNewGame(ActionEvent actionEvent) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Number Memory \n" +
+                "The average person can remember 7 numbers at once. \n" +
+                "Can you do more? \n" +
+                "Click anywhere to start");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Number Memory Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            newRound();
+        });
 
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
 
-    private int[] compareNumbers() {
-        int[] numsCorrect = new int[this.digitOfNumber];
-        int loopBound;
-        if (this.userinputNumber == 0) {
-            loopBound = 1;
-        } else {
-            loopBound = (int)(Math.log10((double)this.userinputNumber) + 1.0D);
-        }
+    }
 
-        if (loopBound > this.digitOfNumber) {
-            numsCorrect = new int[loopBound];
-        }
-
-        int tempNum = this.generatedNumber;
-        int tempInput = this.userinputNumber;
-
-        for(int i = 0; i < loopBound; ++i) {
-            if (i >= this.digitOfNumber) {
-                numsCorrect[i] = 0;
-            } else if (tempNum % 10 == tempInput % 10) {
-                numsCorrect[i] = 1;
-            } else {
-                numsCorrect[i] = 0;
-            }
-
-            tempNum /= 10;
-            tempInput /= 10;
-        }
-
-        return numsCorrect;
+    public void menuAbout(ActionEvent actionEvent) {
+        Stage instructionStage = new Stage();
+        Label instructions = new Label ("CS351 Homework Project 2 \n" +
+                "Human benchmark version 0.1" +
+                "Zhibin 'Bing' Hong \n" +
+                "hong@unm.edu \n");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        instructionStage.initModality(Modality.APPLICATION_MODAL);
+        instructionStage.initOwner(getGameStage());
+        instructionStage.setAlwaysOnTop(true);
+        instructionStage.setTitle("Reaction Time Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            instructionStage.close();
+        });
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        instructionStage.setScene(scene);
+        instructionStage.show();
     }
 }
-//    public void updateLabel() {
-//    }
-
-//    private int getInput() {
-////        int userinputNumber = -1;
-////        if(userInputTextField.getText().length()!=0){
-////            try {userinputNumber = Integer.parseInt(userInputTextField.getText()); }
-////            catch (NumberFormatException e) {gameOverPopup();}
-////        }
-////        return userinputNumber;
-////    }
-//
-//    private void gameOverPopup() {
-//    }
-//}
-
-//    public void actionBtnNew(ActionEvent actionEvent) {
-////        AnimationTimer a = new AnimationTimer() {
-////            @Override
-////            public void handle(long now) {
-////                updateLabel();
-////            }
-////        };
-////        a.start();
-////
-////        Thread timer = new Thread(() -> {
-////            Object o = new Object();
-////            synchronized(o){
-////                try{
-////                    o.wait(3000);
-////                    visible = false;
-////                } catch(InterruptedException e) {
-////                    e.printStackTrace();
-////                }
-////            }
-////        });
-////        int num = 0;
-////        double rand;
-////        for (int i =0; i< digitOfNumber; i++){
-////            rand = Math.random()*9;
-////            num +=(int)(rand*Math.pow(10,i));
-////        }
-////        generatedNumber = num;
-////        userinputNumber = -1;
-////        timer.start();
-//    }
-
-/*
-    public void actionBtnNext(ActionEvent actionEvent) {
-        // determine whether number matches
-        boolean numberMatches = true;
-        for (int i: compareNumbers()){
-            if (i==0) {
-                numberMatches = false;
-                break;
-            }
-        }
-        if (numberMatches){
-            if(digitOfNumber ==20){
-                setCurrScore(digitOfNumber);
-                //gameOverPopUp();
-            }
-            else{
-                digitOfNumber ++;
-                visible = true;
-            }
-        }
-        else{setCurrScore(digitOfNumber);}
-
-        // generate numbers
-        int num = 0;
-        double rand;
-        for (int i=0; i<digitOfNumber; i++){
-            rand = Math.random()*9;
-            num+=(int)(rand*Math.pow(10,i));
-        }
-        generatedNumber = num;
-        System.out.println(num);
-    }
-
-
- */

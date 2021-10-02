@@ -16,14 +16,13 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
-                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
+                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" onAction="#menuNewGame" text="New Game" />
                         <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
-                        <MenuItem fx:id="MenuClose" mnemonicParsing="false" text="Close" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" text="About" />
+                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" onAction="#menuAbout" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -33,14 +32,12 @@
         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle fx:id="recMain" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="239.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="373.0" />
-            <Button fx:id="Instruction" layoutX="14.0" layoutY="268.0" mnemonicParsing="false" onAction="#InstructionPop" text="How to play?" />
-            <Button fx:id="BtnRestart" layoutX="14.0" layoutY="306.0" mnemonicParsing="false" onAction="#ActionRestart" text="Start / Reset" />
             <Label fx:id="lblMain" layoutX="13.0" layoutY="13.0" onMouseClicked="#mouseClick" prefHeight="241.0" prefWidth="374.0" text="Don't do anything..." textAlignment="CENTER">
                <font>
                   <Font size="39.0" />
                </font></Label>
-            <Label fx:id="RTLabel2" layoutX="186.0" layoutY="273.0" text="Your reaction time is:" />
-            <Label fx:id="RTLabel1" layoutX="186.0" layoutY="311.0" text="Average reaction time is:" />
+            <Label fx:id="RTLabel2" layoutX="144.0" layoutY="271.0" text="Your reaction time is:" />
+            <Label fx:id="RTLabel1" layoutX="134.0" layoutY="302.0" text="Average reaction time is:" />
          </children>
         </Pane>
     </center>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -15,14 +16,13 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
-                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
+                        <MenuItem fx:id="MenuNew" mnemonicParsing="false" onAction="#menuNewGame" text="New Game" />
                         <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
-                        <MenuItem fx:id="MenuClose" mnemonicParsing="false" text="Close" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" text="About" />
+                        <MenuItem id="About Humam Benchmark" fx:id="MenuAbout" mnemonicParsing="false" onAction="#menuAbout" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -33,10 +33,12 @@
          <children>
             <Button fx:id="btnNew" layoutX="221.0" layoutY="282.0" mnemonicParsing="false" onAction="#actionBtnNew" text="NEW" />
             <Button fx:id="btnSeen" layoutX="117.0" layoutY="282.0" mnemonicParsing="false" onAction="#actionBtnSeen" text="SEEN" />
-            <Label fx:id="labelLives" layoutX="63.0" layoutY="38.0" text="L" />
-            <Label fx:id="labelScore" layoutX="285.0" layoutY="38.0" text="S" />
-            <Label fx:id="word" layoutX="78.0" layoutY="95.0" prefHeight="142.0" prefWidth="245.0" text="TEST WORD" textAlignment="CENTER" />
-            <Button fx:id="btnNewGame" layoutX="291.0" layoutY="282.0" mnemonicParsing="false" onAction="#actionBtnNewGame" text="New Game" />
+            <Label fx:id="labelLives" layoutX="63.0" layoutY="38.0" text="LIVES" />
+            <Label fx:id="labelScore" layoutX="285.0" layoutY="38.0" text="SCORE" />
+            <Label fx:id="word" layoutX="3.0" layoutY="95.0" prefHeight="142.0" prefWidth="397.0" text="TEST WORD" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font size="41.0" />
+               </font></Label>
          </children>
         </Pane>
     </center>

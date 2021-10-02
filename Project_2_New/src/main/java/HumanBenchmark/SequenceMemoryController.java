@@ -4,13 +4,16 @@ import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -65,21 +68,6 @@ public class SequenceMemoryController extends MiniGame {
 
     public void setTotalMouseClick(int totalMouseClick){this.totalMouseClick = totalMouseClick;}
 
-
-    public void ActionMenuMainPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
-        try {
-            Pane mainBorderPane = loaderMainMenu.load();
-            HumanBenchmarkController controller = loaderMainMenu.getController();
-            controller.setScene(scene);
-            scene.setRoot(mainBorderPane);
-            // trying to get back...
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     @Override
     public void playGame() {
 
@@ -94,33 +82,6 @@ public class SequenceMemoryController extends MiniGame {
     public void instructionsPopUp() {
 
     }
-
-    // get all buttons in allbuttons
-    public void gameStart(){
-        setAllButtons(allButtons);
-        allButtons.add(btn0);
-        allButtons.add(btn1);
-        allButtons.add(btn2);
-        allButtons.add(btn3);
-        allButtons.add(btn4);
-        allButtons.add(btn5);
-        allButtons.add(btn6);
-        allButtons.add(btn7);
-        allButtons.add(btn8);
-    }
-    // boolean noError = ture;
-    // if noError == true:
-        // for loop, add i=lvl items into newButtons, allow more items, just use regular random. allow duplication
-        // display newButtons in the newButtons, with an order;
-        // ask user to clickbuttons, moves = lvl;
-        // do an equals() match;
-            // if userButton.equalsto(newButtons)
-                // lvl++
-                // moves =0;
-                // clearArray();
-            // else
-                // noError = false, gameOverpopuop();
-
 
     public void actionBtnStart(ActionEvent actionEvent) {
         setAllButtons(allButtons);
@@ -143,6 +104,42 @@ public class SequenceMemoryController extends MiniGame {
         setNewButtons(newButtons);
 
         setupCanvas(move);
+    }
+
+    public void newRound(){
+        setAllButtons(allButtons);
+        allButtons.add(btn0);
+        allButtons.add(btn1);
+        allButtons.add(btn2);
+        allButtons.add(btn3);
+        allButtons.add(btn4);
+        allButtons.add(btn5);
+        allButtons.add(btn6);
+        allButtons.add(btn7);
+        allButtons.add(btn8);
+
+        move = 1;
+        level = 1;
+        setMove(move);
+        setLevel(level);
+        setNoError(noError);
+        setUserButtons(userButtons);
+        setNewButtons(newButtons);
+
+        setupCanvas(move);
+    }
+    public void gameReset(){
+        setAllButtons(allButtons);
+        for (int i = 0; i<9; i++) {
+            allButtons.get(i).setStyle(null);
+        }
+        setNewButtons(newButtons);
+        setUserButtons(userButtons);
+        setTotalMouseClick(totalMouseClick);
+        allButtons = new ArrayList<>();
+        newButtons = new ArrayList<>();
+        userButtons = new ArrayList<>();
+        totalMouseClick = 0;
     }
 
     private SequentialTransition playOneButton(int buttonIndex) {
@@ -189,10 +186,14 @@ public class SequenceMemoryController extends MiniGame {
                 setupCanvas(1);
                 userButtons = new ArrayList<>();
                 totalMouseClick=0;
+
                 level++;
+                lblLvl.setText("Level: "+ level);
             }
             else {
                 System.out.println("game Over");
+                gameOverPopOut(level);
+                totalMouseClick = 0;
             }
         }
         if (totalMouseClick >1 && level>1 && totalMouseClick == level){
@@ -202,10 +203,12 @@ public class SequenceMemoryController extends MiniGame {
                 userButtons = new ArrayList<>();
                 totalMouseClick = 0;
                 level++;
+                lblLvl.setText("Level: "+ level);
             }
             else {
                 System.out.println("gameover");
-
+                gameOverPopOut(level);
+                totalMouseClick = 0;
             }
         }
 
@@ -229,6 +232,102 @@ public class SequenceMemoryController extends MiniGame {
     public void totalClickCount(int t){
         totalMouseClick++;
     }
+
+    private void gameOverPopOut(int lvl) {
+
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Game Over! \n" +
+                "Your final level is: " + lvl + ".");
+        Button startButton = new Button("Try Again!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Game Over");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            gameReset();
+            newGameStage.close();
+            newRound();
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+    }
+
+    public void menuNewGame(ActionEvent actionEvent) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label (" Sequence Memory \n" +
+                "Memorize the Pattern");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Sequence Memory");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            newRound();
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+
+    }
+
+    public void menuAbout(ActionEvent actionEvent) {
+        Stage instructionStage = new Stage();
+        Label instructions = new Label ("CS351 Homework Project 2 \n" +
+                "Human benchmark version 0.1 \n" +
+                "Zhibin 'Bing' Hong \n" +
+                "hong@unm.edu \n");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        instructionStage.initModality(Modality.APPLICATION_MODAL);
+        instructionStage.initOwner(getGameStage());
+        instructionStage.setAlwaysOnTop(true);
+        instructionStage.setTitle("Reaction Time Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            instructionStage.close();
+        });
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        instructionStage.setScene(scene);
+        instructionStage.show();
+    }
+
+
+    public void ActionMenuMainPage(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
+        try {
+            Pane mainBorderPane = loaderMainMenu.load();
+            HumanBenchmarkController controller = loaderMainMenu.getController();
+            controller.setScene(scene);
+            scene.setRoot(mainBorderPane);
+            // trying to get back...
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public void mouseClickBtn0(MouseEvent mouseEvent) {
         setLevel(level);

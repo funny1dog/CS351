@@ -4,17 +4,22 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -43,6 +48,7 @@ public class TypingTestController extends MiniGame{
     private boolean gameRunning;
     private boolean timerStarted;
     private long start;
+    private HBox line = new HBox();
 
 
 
@@ -65,6 +71,8 @@ public class TypingTestController extends MiniGame{
         this.startTime = startTime;
     }
     public void setWordsTyped(int wordsTyped) {this.wordsTyped = wordsTyped;}
+    public void setVboxText(VBox vboxText){this.vboxText = vboxText;}
+    public void setLine(HBox line){this.line = line;}
 
     public void ActionMenuMainPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader loaderMainMenu = new FXMLLoader(getClass().getResource("HumanBenchmark.fxml"));
@@ -80,6 +88,7 @@ public class TypingTestController extends MiniGame{
     }
     // hit start button
     public void actionBtnStart(ActionEvent actionEvent) {
+
         AnimationTimer a = new AnimationTimer(){
 
             @Override
@@ -94,7 +103,8 @@ public class TypingTestController extends MiniGame{
                         minutesTime = elapsedTime/(6e+10);
                         getCurrentScore((int)((totalChars/5)/minutesTime));
                         gameRunning = false;
-                        //gameOverPopup;
+                        int result = (int) ((totalChars/5)/minutesTime);
+                        gameOverPopOut(result);
 
                     }
                 }
@@ -120,18 +130,56 @@ public class TypingTestController extends MiniGame{
             line.getChildren().add(tempLabel);
         }
         vboxText.getChildren().add(line);
-//        // create an ArrayList<char> wordsOfDIsplayed
-//        String words = "This is just a sample text.";
-//        for (int i = 0; i < words.length(); i++) {
-//            display.add(words.charAt(i));}
-//        //System.out.print(display);
-//        for(int i=0;i<display.size();i++){
-//            System.out.println(display.get(i));
-//        }
-//        // create an empty arraylist typedOfDisplay Arraylist<char>
-//            // bring text to textarea;
-//            // also include the size of the ArrayList<char>
-//            // timer start counting;
+
+
+    }
+
+    public void newRound(){
+        setVboxText(vboxText);
+        setLine(line);
+        vboxText.getChildren().clear();
+        line.getChildren().clear();
+        AnimationTimer a = new AnimationTimer(){
+
+            @Override
+            public void handle(long now) {
+                boolean gameOver;
+                long elapsedTime;
+                double minutesTime;
+                if(gameRunning){
+                    gameOver = checkTyping();
+                    if(gameOver){
+                        elapsedTime = System.nanoTime() - start;
+                        minutesTime = elapsedTime/(6e+10);
+                        getCurrentScore((int)((totalChars/5)/minutesTime));
+                        gameRunning = false;
+                        int result = (int) ((totalChars/5)/minutesTime);
+                        gameOverPopOut(result);
+
+                    }
+                }
+            }
+        };
+        a.start();
+        char[] charText;
+
+        Label tempLabel;
+        int numChars = 0;
+        int rand = (int)(Math.random()*5);
+        gameRunning = true;
+        timerStarted = false;
+        charText = choosePassage(rand).toCharArray();
+        for(char c:charText){
+            if(numChars == 45){
+                vboxText.getChildren().add(line);
+                line = new HBox();
+                numChars = 0;
+            }
+            numChars ++;
+            tempLabel = new Label("" +c);
+            line.getChildren().add(tempLabel);
+        }
+        vboxText.getChildren().add(line);
     }
 
     private boolean checkTyping(){
@@ -177,9 +225,6 @@ public class TypingTestController extends MiniGame{
         }
     }
 
-
-
-
     @Override
     public void playGame() {
 
@@ -203,21 +248,101 @@ public class TypingTestController extends MiniGame{
 
     private String choosePassage(int i) {
         if (i == 0) {
-            this.totalChars = 486;
-            return "They passed beneath the gatehouse, over the drawbridge, through the outer walls. Summer andGrey Wind came loping beside them, sniffing at the wind. Close behind came Theon Greyjoy, with his longbow and a quiver of broadheads; he had a mind to take a deer, he had told them. He was followed by four guardsmen in mailed shirts and coifs, and Joseth, a stick-thin stableman whom Robb had named master of horse while Hullen was away. Maester Luwin brought up the rear, riding on a donkey. ";
+            this.totalChars = 497;
+            return "All the action of Ulysses takes place in and immediately around Dublin on a single day (June 16, 1904). The three central characters—Stephen Dedalus (the hero of Joyce’s earlier Portrait of the Artist as a Young Man); Leopold Bloom, a Jewish advertising canvasser; and his wife, Molly—are intended to be modern counterparts of Telemachus, Ulysses (Odysseus), and Penelope, respectively, and the events of the novel loosely parallel the major events in Odysseus’s journey home after the Trojan War.";
         } else if (i == 1) {
-            this.totalChars = 528;
-            return "Beyond the castle lay the market square, its wooden stalls deserted now. They rode down the muddy streets of the village, past rows of small neat houses of log and undressed stone. Less than one in five were occupied, thin tendrils of wood smoke curling up from their chimneys. The rest would fill up one by one as it grew colder. When the snow fell and the ice winds howled down out of the north, Old Nan said, farmers left their frozen fields and distant hold fasts, loaded up their wagons, and then the winter town came alive.";
+            this.totalChars = 479;
+            return "The book begins at 8:00 in the morning in a Martello tower (a Napoleonic-era defensive structure), where Stephen lives with medical student Buck Mulligan and his English friend Haines. They prepare for the day and head out. After teaching at a boys’ school, Stephen receives his pay from the ignorant and anti-Semitic headmaster, Mr. Deasy, and takes a letter from Deasy that he wants to have published in two newspapers. Afterward Stephen wanders along a beach, lost in thought.";
         } else if (i == 2) {
-            this.totalChars = 465;
-            return "Bran felt a sudden dread. Dark wings, dark words, Old Nan always said, and of late the messenger ravens had been proving the truth of the proverb. When Robb wrote to the Lord Commander of the night's Watch, the bird that came back brought word that Uncle Benjen was still missing. Then a message had arrived from the Eyrie, from Mother, but that had not been good news either. She did not say when she meant to return, only that she had taken the Imp as a prisoner.";
+            this.totalChars = 649;
+            return "Bloom goes to a newspaper office to negotiate the placement of an advertisement, which the foreman agrees to as long as it is to run for three months. Bloom leaves to talk with the merchant placing the ad. Stephen arrives with Deasy’s letter, and the editor agrees to publish it. When Bloom returns with an agreement to place the ad for two months, the editor rejects it. Bloom walks through Dublin for a while, stopping to chat with Mrs. Breen, who mentions that Mina Purefoy is in labour. He later has a cheese sandwich and a glass of wine at a pub. On his way to the National Library afterward, he spots Boylan and ducks into the National Museum.";
         } else if (i == 3) {
-            this.totalChars = 469;
-            return "Bran had sort of liked the little man, yet the name Lannister sent cold fingers creeping up his spine. There was something about the Lannisters, something he ought to remember, but when he tried to think what, he felt dizzy and his stomach clenched hard as a stone. Robb spent most of that day locked behind closed doors with Maester Luwin, Theon Greyjoy, and Hallis Mollen. Afterward, riders were sent out on fast horses, carrying Robb’s commands throughout the north.";
+            this.totalChars = 344;
+            return "In the National Library, Stephen discusses his theories about Shakespeare and Hamlet with the poet AE, the essayist and librarian John Eglinton, and the librarians Richard Best and Thomas Lyster. Bloom arrives, looking for a copy of an advertisement he had placed, and Buck shows up. Stephen and Buck leave to go to a pub as Bloom also departs.";
         } else {
-            this.totalChars = 544;
-            return "The stream was running high and fast. Robb dismounted and led his gelding across the ford. In the deepest part of the crossing, the water came up to midthigh. He tied his horse to a tree on the far side, and waded back across for Bran and Dancer. The current foamed around rock and root, and Bran could feel the spray on his face as Robb led him over. It made him smile. For a moment he felt strong again, and whole. He looked up at the trees and dreamed of climbing them, right up to the very top, with the whole forest spread out beneath him.";
+            this.totalChars = 534;
+            return "Simon and Matt Lenehan meet in the bar of the Ormond Hotel, and later Boylan arrives. Leopold had earlier seen Boylan’s car and followed it to the hotel, where he then dines with Richie Goulding. Boylan leaves with Lenehan, on his way to his assignation with Molly. Later, Bloom goes to Barney Kiernan’s boisterous pub, where he is to meet Cunningham in order to help with the Dignam family’s finances. Bloom finds himself being cruelly mocked, largely for his Jewishness. He defends himself, and Cunningham rushes him out of the bar.";
         }
     }
+
+    private void gameOverPopOut(int result) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Game Over! \n" +
+                "Your RPM is: " + result + " PER MINUTE");
+        Button startButton = new Button("Try Again!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Game Over");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            newRound();
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+    }
+
+    public void menuNewGame(ActionEvent actionEvent) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Verbal Memory \n" +
+                "You will be shown words, one at a time. \n" +
+                "If you have seen a word during the test, click SEEN \n" +
+                "If it's a new word, click NEW \n" +
+                "Click Start to start");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Typing Test Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            newRound();
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+
+    }
+
+    public void menuAbout(ActionEvent actionEvent) {
+        Stage instructionStage = new Stage();
+        Label instructions = new Label ("CS351 Homework Project 2 \n" +
+                "Human benchmark version 0.1 \n" +
+                "Zhibin 'Bing' Hong \n" +
+                "hong@unm.edu \n");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        instructionStage.initModality(Modality.APPLICATION_MODAL);
+        instructionStage.initOwner(getGameStage());
+        instructionStage.setAlwaysOnTop(true);
+        instructionStage.setTitle("Reaction Time Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            instructionStage.close();
+        });
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        instructionStage.setScene(scene);
+        instructionStage.show();
+    }
 }
+
 

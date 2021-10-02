@@ -28,12 +28,9 @@ public class ReactionTimeController extends MiniGame {
     @FXML Label RTLabel1;
     @FXML Label RTLabel2;
     private Scene scene;
-    private boolean gameRunning;
-    private boolean clickReady;
-    private long startTime;
+
     public long clickTime;
     public long clockTime;
-
 
     public ReactionTimeController(/*String n, String unit, boolean inverse*/) throws Exception {
 
@@ -60,26 +57,7 @@ public class ReactionTimeController extends MiniGame {
     }
 
     @Override
-    public void playGame() {
-
-        Thread timer = new Thread(() -> {
-            Object o = new Object();
-            int rand = (int) (Math.random() * 5000) + 1500;
-            synchronized (o) {
-                try {
-                    o.wait(rand);
-                    if (gameRunning) {
-                        clickReady = true;
-                        startTime = System.nanoTime();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        clickReady = false;
-        timer.start();
-    }
+    public void playGame() {}
 
     public void test() {
         System.out.println("test");
@@ -89,10 +67,7 @@ public class ReactionTimeController extends MiniGame {
         mouseClickTime();
         long result = clickTime - clockTime - 3000;
         RTLabel1.setText("Reaction time is:" +  result + "MS");
-    }
-
-    public void ActionRestart(ActionEvent actionEvent) {
-        newRound();
+        gameOverPopUp(result);
     }
 
     public long newRound(){
@@ -115,49 +90,51 @@ public class ReactionTimeController extends MiniGame {
         long clickTime = System.currentTimeMillis();
         this.clickTime = clickTime;
         System.out.println(clickTime);
-        //recMain.setFill(Color.WHITE);
         return clickTime;
     }
-
 
     @Override
     public void initializeWindow(Stage primaryStage) {
 
     }
 
-    public void InstructionPop(ActionEvent actionEvent){
-        Stage instructionStage = new Stage();
-        Label instructions = new Label ("test");
+    @Override
+    public void instructionsPopUp() {}
+
+    public void menuNewGame(ActionEvent actionEvent) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Reaction Time Test \n" +
+                "When the blue box turns green, \n" +
+                "Hit as quickly as you can. \n" +
+                "Click anywhere to start");
         Button startButton = new Button("Start!");
         BorderPane borderPane = new BorderPane();
         Scene scene;
-        instructionStage.initModality(Modality.APPLICATION_MODAL);
-        instructionStage.initOwner(getGameStage());
-        instructionStage.setAlwaysOnTop(true);
-        instructionStage.setTitle("Reaction Time Instruction");
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Reaction Time Instruction");
         startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-            instructionStage.close();
-            gameRunning = true;
-            playGame();
+            newGameStage.close();
+            newRound();
         });
-
-        gameRunning = false;
-        clickReady = false;
 
         borderPane.setCenter(instructions);
         borderPane.setBottom(startButton);
         BorderPane.setAlignment(instructions, Pos.CENTER);
         BorderPane.setAlignment(startButton, Pos.CENTER);
         scene = new Scene(borderPane, 300, 200);
-        instructionStage.setScene(scene);
-        instructionStage.show();
+        newGameStage.setScene(scene);
+        newGameStage.show();
 
     }
 
-    @Override
-    public void instructionsPopUp() {
+    public void menuAbout(ActionEvent actionEvent) {
         Stage instructionStage = new Stage();
-        Label instructions = new Label ("test");
+        Label instructions = new Label ("CS351 Homework Project 2 \n" +
+                "Human benchmark version 0.1" +
+                "Zhibin 'Bing' Hong \n" +
+                "hong@unm.edu \n");
         Button startButton = new Button("Start!");
         BorderPane borderPane = new BorderPane();
         Scene scene;
@@ -167,13 +144,7 @@ public class ReactionTimeController extends MiniGame {
         instructionStage.setTitle("Reaction Time Instruction");
         startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
             instructionStage.close();
-            gameRunning = true;
-            playGame();
         });
-
-        gameRunning = false;
-        clickReady = false;
-
         borderPane.setCenter(instructions);
         borderPane.setBottom(startButton);
         BorderPane.setAlignment(instructions, Pos.CENTER);
@@ -181,6 +152,32 @@ public class ReactionTimeController extends MiniGame {
         scene = new Scene(borderPane, 300, 200);
         instructionStage.setScene(scene);
         instructionStage.show();
+    }
 
+    public void gameOverPopUp(long result){
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Game Over! \n" +
+                "Your score is: " + result + " ms!");
+        Button startButton = new Button("Try Again!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Game Over");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            newRound();
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
     }
 }
+
+// score variable: long result.

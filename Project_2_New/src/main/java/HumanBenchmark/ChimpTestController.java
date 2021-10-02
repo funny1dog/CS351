@@ -4,11 +4,14 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -175,6 +178,7 @@ public class ChimpTestController extends MiniGame {
 
         setUpCanvas(lvl);
     }
+
     public void gameStart(int lvl, int lives, int streaks){
         setlvl(lvl);
         setLives(lives);
@@ -251,7 +255,7 @@ public class ChimpTestController extends MiniGame {
             newButtons.get(i).setStyle("-fx-base: #0096FF");
             newButtons.get(i).setText(String.valueOf(i + 1));
             PauseTransition pause = new PauseTransition(
-                    Duration.seconds(3)
+                    Duration.seconds(1)
             );
             int finalI = i;
             pause.setOnFinished(e -> {
@@ -259,7 +263,6 @@ public class ChimpTestController extends MiniGame {
             });
             pause.play();
         }
-
     }
 
     public void resetColor(){
@@ -299,6 +302,7 @@ public class ChimpTestController extends MiniGame {
 
 
     }
+
     public void match (){
 
         setlvl(lvl);
@@ -332,6 +336,7 @@ public class ChimpTestController extends MiniGame {
                 }
                 else {
                     System.out.print("GameOver");
+                    gameOverPopOut(lvl);
                 }
             }
         }
@@ -359,6 +364,7 @@ public class ChimpTestController extends MiniGame {
                 else {
                     //game over
                     System.out.println("Game Over");
+                    gameOverPopOut(lvl);
                 }
             }
         }
@@ -368,6 +374,94 @@ public class ChimpTestController extends MiniGame {
         totalMouseClick++;
         lblClickCount.setText(String.valueOf(totalMouseClick));
     }
+
+    private void gameOverPopOut(int lvl) {
+
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Game Over! \n" +
+                "Your final level is: " + lvl + ".");
+        Button startButton = new Button("Try Again!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Game Over");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            resetColor();
+            gameStart(1, 3, 0);
+            newGameStage.close();
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+    }
+
+    public void menuNewGame(ActionEvent actionEvent) {
+        Stage newGameStage = new Stage();
+        Label instructions = new Label ("Chimpanzee Test \n" +
+                "Are you Smarter Than a Chimpanzee? \n" +
+                "Click the squares in order acording to their numbers. \n" +
+                "The test will get progressively harder \n" +
+                "Click Start to start");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        newGameStage.initModality(Modality.APPLICATION_MODAL);
+        newGameStage.initOwner(getGameStage());
+        newGameStage.setAlwaysOnTop(true);
+        newGameStage.setTitle("Chimpanzee Test");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            newGameStage.close();
+            lvl = 1;
+            lives = 3;
+            streaks = 0;
+            gameStart(lvl, lives, streaks);
+        });
+
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        newGameStage.setScene(scene);
+        newGameStage.show();
+
+    }
+
+    public void menuAbout(ActionEvent actionEvent) {
+        Stage instructionStage = new Stage();
+        Label instructions = new Label ("CS351 Homework Project 2 \n" +
+                "Human benchmark version 0.1 \n" +
+                "Zhibin 'Bing' Hong \n" +
+                "hong@unm.edu \n");
+        Button startButton = new Button("Start!");
+        BorderPane borderPane = new BorderPane();
+        Scene scene;
+        instructionStage.initModality(Modality.APPLICATION_MODAL);
+        instructionStage.initOwner(getGameStage());
+        instructionStage.setAlwaysOnTop(true);
+        instructionStage.setTitle("Reaction Time Instruction");
+        startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+            instructionStage.close();
+        });
+        borderPane.setCenter(instructions);
+        borderPane.setBottom(startButton);
+        BorderPane.setAlignment(instructions, Pos.CENTER);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
+        scene = new Scene(borderPane, 300, 200);
+        instructionStage.setScene(scene);
+        instructionStage.show();
+    }
+
+
+
+
 
     public void mouseClickCount0(MouseEvent mouseEvent) {
         setTotalMouseClick(totalMouseClick);
