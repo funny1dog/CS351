@@ -31,8 +31,9 @@ public class SequenceMemoryController extends MiniGame {
     private ArrayList<Button> allButtons = new ArrayList<Button>();
     private ArrayList<Button> newButtons =new ArrayList<Button>();
     private ArrayList<Button> userButtons =new ArrayList<Button>();
-    private int lvl;
+    private int move;
     private boolean noError = true;
+    private int level;
 
     public SequenceMemoryController(/*String n, String unit, boolean inverse*/) throws Exception {
         //super(n, unit, inverse);
@@ -54,11 +55,15 @@ public class SequenceMemoryController extends MiniGame {
         this.userButtons = userButtons;
     }
 
-    public void setlvl(int lvl) {
-        this.lvl = lvl;
+    public void setMove(int lvl) {
+        this.move = lvl;
     }
 
+    public void setLevel(int level){this.level = level;};
+
     public void setNoError(boolean noError){ this.noError = noError;};
+
+    public void setTotalMouseClick(int totalMouseClick){this.totalMouseClick = totalMouseClick;}
 
 
     public void ActionMenuMainPage(ActionEvent actionEvent) throws IOException {
@@ -129,13 +134,15 @@ public class SequenceMemoryController extends MiniGame {
         allButtons.add(btn7);
         allButtons.add(btn8);
 
-        lvl = 1;
-        setlvl(lvl);
+        move = 1;
+        level = 1;
+        setMove(move);
+        setLevel(level);
         setNoError(noError);
         setUserButtons(userButtons);
         setNewButtons(newButtons);
 
-        setupCanvas(lvl);
+        setupCanvas(move);
     }
 
     private SequentialTransition playOneButton(int buttonIndex) {
@@ -146,7 +153,6 @@ public class SequenceMemoryController extends MiniGame {
         maintainButtonColor.setOnFinished(e -> newButtons.get(buttonIndex).setStyle(null));
 
         PauseTransition addDelay = new PauseTransition(Duration.millis(500));
-
         return new SequentialTransition(setButtonColor, maintainButtonColor, addDelay);
     }
 
@@ -168,33 +174,250 @@ public class SequenceMemoryController extends MiniGame {
         all.play();
     }
 
+    private void match() {
+        setMove(move);
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        setNoError(noError);
+        setUserButtons(userButtons);
+        setNewButtons(newButtons);
+        setAllButtons(allButtons);
+
+        if (totalMouseClick ==1 && level == 1) {
+            if (userButtons.equals(newButtons)) {
+                System.out.println("lvl1 passed");
+                setupCanvas(1);
+                userButtons = new ArrayList<>();
+                totalMouseClick=0;
+                level++;
+            }
+            else {
+                System.out.println("game Over");
+            }
+        }
+        if (totalMouseClick >1 && level>1 && totalMouseClick == level){
+            if (userButtons.equals(newButtons)){
+                System.out.println("lal1+ passed");
+                setupCanvas(1);
+                userButtons = new ArrayList<>();
+                totalMouseClick = 0;
+                level++;
+            }
+            else {
+                System.out.println("gameover");
+
+            }
+        }
+
+
+
+    }
+
     public void actionBtnReset(ActionEvent actionEvent) {
+        setAllButtons(allButtons);
+        for (int i = 0; i<9; i++) {
+            allButtons.get(i).setStyle(null);
+        }
+        setNewButtons(newButtons);
+        setUserButtons(userButtons);
+        setTotalMouseClick(totalMouseClick);
+        allButtons = new ArrayList<>();
+        newButtons = new ArrayList<>();
+        userButtons = new ArrayList<>();
+    }
+
+    public void totalClickCount(int t){
+        totalMouseClick++;
     }
 
     public void mouseClickBtn0(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn0.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn0.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn0);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn1(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn1.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn1.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn1);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn2(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn2.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn2.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn2);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn3(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn3.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn3.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn3);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn4(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn4.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn4.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn4);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn5(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn5.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn5.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn5);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn6(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn6.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn6.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn6);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn7(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn7.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn7.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn7);
+        System.out.println("user input: " + btn7);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 
     public void mouseClickBtn8(MouseEvent mouseEvent) {
+        setLevel(level);
+        setTotalMouseClick(totalMouseClick);
+        totalClickCount(totalMouseClick);
+        setUserButtons(userButtons);
+        btn8.setStyle("-fx-base: #008000");
+        PauseTransition pause = new PauseTransition(
+                Duration.millis(200)
+        );
+        pause.setOnFinished(e -> {
+            btn8.setStyle(null);
+        });
+        pause.play();
+        userButtons.add(btn8);
+        System.out.println("user input: " + btn8);
+        System.out.println("user" + userButtons);
+        System.out.println("new" + newButtons);
+        System.out.println("mouseClick" + totalMouseClick);
+        System.out.println("level" + level);
+        match();
     }
 }
