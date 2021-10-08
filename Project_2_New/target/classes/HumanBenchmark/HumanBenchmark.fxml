@@ -17,7 +17,6 @@
             <items>
                 <MenuItem fx:id="MenuNew" mnemonicParsing="false" text="New Game" />
                   <MenuItem fx:id="MenuMainPage" mnemonicParsing="false" onAction="#ActionMenuMainPage" text="Main Page" />
-                <MenuItem fx:id="MenuClose" mnemonicParsing="false" onAction="#WTFCLOSE" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -67,9 +66,6 @@
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="BtnClose" mnemonicParsing="false" onAction="#BtnClose" text="Button" />
-         </children></VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>

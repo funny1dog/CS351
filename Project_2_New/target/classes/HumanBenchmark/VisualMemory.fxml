@@ -103,8 +103,6 @@
     <right>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="btnStart" mnemonicParsing="false" onAction="#gameStart" text="START" />
-                <Button fx:id="resetColor" mnemonicParsing="false" onAction="#resetColor" text="RESET" />
                 <Label fx:id="lblClickCount" text="clicks: " />
                 <Label fx:id="lbllives" text="lives: " />
                 <Label fx:id="lblstreaks" text="streaks:" />
