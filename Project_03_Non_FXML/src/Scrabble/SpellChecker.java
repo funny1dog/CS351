@@ -1,11 +1,14 @@
+package Scrabble;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpellChecker {
+class SpellChecker {
+    // check the word. Build a tree
     private TrieNode root;
     private static Map<Integer, Character> intToCharMap = new HashMap<>();
 
-    SpellChecker(){
+    // list all of the char
+    SpellChecker() {
         intToCharMap.put(0,'a');
         intToCharMap.put(1,'b');
         intToCharMap.put(2,'c');
@@ -34,25 +37,23 @@ public class SpellChecker {
         intToCharMap.put(25,'z');
         root = new TrieNode();
     }
-
-    // insert
-    void insert (String word) {
+    //insert
+    void insert(String word) {
         TrieNode parent = root;
         word = word.toLowerCase();
-        for (int i = 0; i< word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) {
             int index = word.charAt(i) - 'a';
             if (parent.children[index] == null) {
                 TrieNode temp = new TrieNode();
                 parent.children[index] = temp;
                 parent = temp;
-            }
-            else {
+            } else {
                 parent = parent.children[index];
             }
         }
+
         parent.endOfWord = true;
     }
-
     // search
     TrieNode search(String s) {
         s = s.toLowerCase();
@@ -71,17 +72,20 @@ public class SpellChecker {
             return null;
         return parent;
     }
+
     TrieNode getRoot() {
         return root;
     }
+
     static char toChar(int j) {
         return intToCharMap.get(j);
     }
-
-    static class TrieNode {
+    //class TrieNode
+    class TrieNode {
         TrieNode[] children;
         boolean endOfWord;
-        TrieNode () {
+
+        TrieNode() {
             this.children = new TrieNode[26];
         }
     }

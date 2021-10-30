@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Random;
 
 public class LetterBag {
     private static LetterBag ourInstance;
@@ -84,32 +85,74 @@ public class LetterBag {
         addInitialLetters('L', 4);
         addInitialLetters('S', 4);
         addInitialLetters('U', 4);
+
         // 2 point letters
         addInitialLetters('D', 4);
         addInitialLetters('G', 3);
+
         // 3 point letters
         addInitialLetters('B', 2);
         addInitialLetters('C', 2);
         addInitialLetters('M', 2);
         addInitialLetters('P', 2);
+
         // 4 point letters
         addInitialLetters('F', 2);
         addInitialLetters('H', 2);
         addInitialLetters('V', 2);
         addInitialLetters('W', 2);
         addInitialLetters('Y', 2);
+
         // 5 point letter
         addInitialLetters('K', 1);
+
         // 8 point letters
         addInitialLetters('J', 1);
         addInitialLetters('X', 1);
-
         addInitialLetters('Q',  1);
         addInitialLetters('Z',  1);
-        // leaving out blanks for now
-        // addInitialLetters('_', 0, 2); // '_' represents a blank letter square
     }
 
+    // create a list of random alphabets and later put on the rack
+    public static String getRandomChar () {
+        Random random  = new Random();
+        if (letters.size()>0) {
+            int rand = random.nextInt (letters.size());
+            return letters.remove(rand).toString();
+        }
+        else
+            return null;
+
+    }
+
+    // add the initial letter(s)
     private void addInitialLetters(Character character, int numberOfOccurrences) {
+        if (isBagEmpty()) {
+            letters.addFirst(character);
+            for (int i = 0; i < numberOfOccurrences-1; i++){
+                letters.add(character);
+            }
+        }
+        else {
+            for (int i = 0; i < numberOfOccurrences; i++) {
+                letters.add(character);
+            }
+        }
+    }
+
+    // add one letter
+    public static void addLetter(Character letterTile) {
+        letters.add(letterTile);
+    }
+
+    // get the size of a letter
+    public static int sizeOfLetter() {
+        return letters.size();
+    }
+
+    // create instance
+    static void createInstance() {
+        if (ourInstance == null)
+            ourInstance = new LetterBag();
     }
 }
