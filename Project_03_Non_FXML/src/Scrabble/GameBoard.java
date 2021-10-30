@@ -15,8 +15,8 @@ class GameBoard extends GridPane {
     // create the grid with score
     static final String wordDoubleModifier = "W*2";
     static final String wordTripleModifier = "W*3";
-    static final String letterDoubleModifier = "W*2";
-    static final String letterTripleModifier = "W*3";
+    static final String letterDoubleModifier = "L*2";
+    static final String letterTripleModifier = "L*3";
     static final String STAR = "★";
 
     // create a new set of words
