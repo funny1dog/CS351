@@ -95,7 +95,7 @@ public class ScrabbleMain extends Application {
     }
     //search word from 'wordList'
     private void buildDictionaryTrie(SpellChecker spellChecker) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("/Users/zhibin/Documents/GitHub/CS351/Project_03_Non_FXML/src/scrabble/wordList"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("sowpods.txt"));
         String line = bufferedReader.readLine();
         while (line != null) {
             spellChecker.insert(line);
